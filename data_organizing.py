@@ -80,8 +80,8 @@ def all_tables(countries, years, tiers):
             for tier in tiers:
                 s = load_s(country, year, tier)
                 s.index = s.index.str.strip()
-                s['Goals_For'] = s['Goals'].str.split(':').apply(lambda s: float(s[0]))
-                s['Goals_Against'] = s['Goals'].str.split(':').apply(lambda s: float(s[1]))
+                s['Goals_For'] = s['Goals'].str.split(':').apply(lambda s: int(s[0]))
+                s['Goals_Against'] = s['Goals'].str.split(':').apply(lambda s: int(s[1]))
                 s = s[s_cols]
                 
                 mv = load_mv(country, year, tier)
@@ -101,7 +101,7 @@ def all_tables(countries, years, tiers):
 
 
 countries = league_info.index
-years = range(2005,2023)
+years = range(2005,2024)
 tiers = [1,2]
 
 merged_tables = all_tables(countries, years, tiers)

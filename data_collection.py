@@ -17,7 +17,7 @@ league_info = pd.read_csv('league_info.csv', index_col='Country')
 
 max_attempts = 20
 countries = league_info.index
-years = range(2005,2023)
+years = range(2005,2024)
 tiers = [1,2]
 
 # Collecting the standings
@@ -39,7 +39,7 @@ while attempt < max_attempts and len(res_s) > 0:
         if not isinstance(standings, pd.DataFrame):
             failed.append((country,year,tier))
         else:
-            standings.to_csv(f'./Standings/S_{code}{tier}_{str(year)[-2:]}.csv',index=False)
+            standings.to_csv(f'./standings/S_{code}{tier}_{str(year)[-2:]}.csv',index=False)
     res_s = failed.copy()
 
 if res_s:
@@ -52,8 +52,8 @@ else:
 res_mv = []
 
 max_attempts = 20
-countries = league_info.index[:2]
-years = range(2018,2019)
+countries = league_info.index
+years = range(2024,2025)
 tiers = [1,2]
 
 for country in countries:
@@ -71,7 +71,7 @@ while attempt < max_attempts and len(res_mv) > 0:
         if not isinstance(market_values, pd.DataFrame):
             failed.append((country,year,tier))
         else:
-            market_values.to_csv(f'./Market Values/MV_{code}{tier}_{str(year)[-2:]}.csv',index=False)
+            market_values.to_csv(f'./market_values/MV_{code}{tier}_{str(year)[-2:]}.csv',index=False)
     res_mv = failed.copy()
 
 if res_mv:
