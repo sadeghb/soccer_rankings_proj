@@ -53,7 +53,7 @@ res_mv = []
 
 max_attempts = 20
 countries = league_info.index
-years = range(2024,2025)
+years = range(2005,2025)
 tiers = [1,2]
 
 for country in countries:
